@@ -4,6 +4,11 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
 import lombok.*;
+import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static jakarta.persistence.GenerationType.IDENTITY;
 
@@ -22,6 +27,21 @@ public class Member {
     private String username;
     private String password;
     private String nickname;
+
+    public List<? extends GrantedAuthority> getGrantedAuthorities(){
+        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+
+        grantedAuthorities.add(new SimpleGrantedAuthority("member"));
+
+        if(isAdmin()){
+            grantedAuthorities.add(new SimpleGrantedAuthority("admin"));
+        }
+        return grantedAuthorities;
+    }
+
+    public boolean isAdmin(){
+        return "admin".equals(username);
+    }
 
 
 }

@@ -12,7 +12,7 @@ import org.springframework.security.web.SecurityFilterChain;
 
 @Configuration
 @EnableWebSecurity // Spring Security를 사용하기 위해 웹 보안 활성화
-@EnableMethodSecurity(prePostEnabled = true) // 메소드 수준의 보안 활성화
+@EnableMethodSecurity // 메소드 수준의 보안 활성화
 @RequiredArgsConstructor // 생성자 자동 생성
 public class SecurityConfig {
     @Bean // 메서드가 빈으로 등록될 수 있도록 함

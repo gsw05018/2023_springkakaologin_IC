@@ -14,6 +14,8 @@ public class NotProd {
     @Bean // 해당 메서드가 빈으로 등록될 수 있음을 나타냄
     public ApplicationRunner init(MemberService memnerservice){
         return args -> {
+            memnerservice.join("admin", "1234", "admin");
+
             IntStream.range(1,3).forEach(i -> {
                 memnerservice.join("user" +i, "1234", "nickname" + i);
             }); // 1부터 2까지의 숫자 범위에서 반복하면서 memeberservice의 join 메서드를 호출
