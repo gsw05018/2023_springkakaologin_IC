@@ -17,7 +17,7 @@ public class NotProd {
             memnerservice.join("admin", "1234", "admin");
 
             IntStream.range(1,3).forEach(i -> {
-                memnerservice.join("templates/user" +i, "1234", "nickname" + i);
+                memnerservice.join("user" +i, "1234", "user" + i);
             }); // 1부터 2까지의 숫자 범위에서 반복하면서 memeberservice의 join 메서드를 호출
         };
     }

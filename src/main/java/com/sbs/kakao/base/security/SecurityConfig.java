@@ -20,15 +20,15 @@ public class SecurityConfig {
         http // httpSecurity 객체를 사용하여 보안 구성 정의
                 .formLogin( // 폼 로그인 구성
                         formLogin -> formLogin
-                                .loginPage("/templates/user/member/login") // 로그인 페이지 지정
+                                .loginPage("/user/member/login") // 로그인 페이지 지정
                 )
                 .oauth2Login( // OAuth2로그인 구성
                         oauth2Login -> oauth2Login
-                                .loginPage("/templates/user/member/login") // 로그인 페이지 구성
+                                .loginPage("/user/member/login") // 로그인 페이지 구성
                 )
                 .logout(
                         logout -> logout
-                                .logoutUrl("/templates/user/member/logout") // 로그아웃 URL 지정
+                                .logoutUrl("/user/member/logout") // 로그아웃 URL 지정
                 );
 
         return http.build(); // 구성된 httpSecurity 반환

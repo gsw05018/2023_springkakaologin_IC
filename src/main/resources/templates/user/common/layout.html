@@ -13,9 +13,15 @@
 
 <div>
     <header>
-        <a href="/user/member/login">로그인</a>
-        <a href="javascript:;" onclick="this.nextElementSibling.submit();">로그아웃</a>
+        <a th:unless="${#authentication.authenticated}" th:href="/user/member/login">로그인</a>
+        <a th:if="${#authentication.authenticated}" href="javascript:;"
+           onclick="this.nextElementSibling.submit();">로그아웃</a>
         <form hidden th:action="|/user/member/logout|" method="POST"></form>
+        <!-- 로그인된 경우에만 보여줄 내용 -->
+        <span th:if="${#authentication.authenticated}">
+            <span th:text="${#authentication.name}"></span>님 환영합니다.
+        </span>
+        <!-- 그 외 로그인 된 사용자에게 보여줄 내용 -->
     </header>
 
     <hr>
@@ -26,3 +32,6 @@
 
 </body>
 </html>
+
+<!--th:unless : 조건이 false일때 해당요소 적용  -->
+<!--${#authentication.authenticated} : 현재 사용자가 인증되었는지 여부 나타내는 표현식-->
