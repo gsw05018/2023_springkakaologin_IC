@@ -8,21 +8,20 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("/user/member")
+@RequestMapping("/user/member") // 액션 URL의 공통 접두어
 @RequiredArgsConstructor
 public class MemberController {
-
     private final MemberService memberService;
 
     @PreAuthorize("isAnonymous()")
     @GetMapping("/login")
-    public String showLogin(){
-        return "user/member/lgoin";
+    public String showLogin() {
+        return "user/member/login";
     }
 
     @PreAuthorize("isAuthenticated()")
     @GetMapping("/me")
-    public String showMe(){
-        return "/user/member/me";
+    public String showMe() {
+        return "user/member/me";
     }
 }

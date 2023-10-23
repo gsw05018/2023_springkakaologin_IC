@@ -28,19 +28,19 @@ public class Member {
     private String password;
     private String nickname;
 
-    public List<? extends GrantedAuthority> getGrantedAuthorities(){
-        List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
+    public List<? extends GrantedAuthority> getGrantedAuthorities(){ // 부여된 권한 목록을 반환하는 메서드
+        List<GrantedAuthority> grantedAuthorities = new ArrayList<>(); // 권한 목록을 담을 리스트 생성
 
-        grantedAuthorities.add(new SimpleGrantedAuthority("member"));
+        grantedAuthorities.add(new SimpleGrantedAuthority("member")); // member 권한 추가
 
-        if(isAdmin()){
-            grantedAuthorities.add(new SimpleGrantedAuthority("admin"));
+        if(isAdmin()){ // 현재 유저가 관리자인지 확인
+            grantedAuthorities.add(new SimpleGrantedAuthority("admin")); // 관리자인 경우 admi 권한 부여 
         }
-        return grantedAuthorities;
+        return grantedAuthorities; // 권한 목록 반환
     }
 
-    public boolean isAdmin(){
-        return "admin".equals(username);
+    public boolean isAdmin(){ // 현재 유저가 관리자인지 확인
+        return "admin".equals(username); // 현재 유저의 username이 admin과 일치하는지 확인하여 관리자 여부 판단
     }
 
 

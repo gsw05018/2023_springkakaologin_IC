@@ -6,10 +6,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.security.Principal;
 
+
 @Controller
 public class HomeController {
     @GetMapping("/")
-    public String showmain(Model model, Principal principal){
+    public String showMain(Model model, Principal principal) {
         String loginedMemberUsername = principal == null ? null : principal.getName();
 
         model.addAttribute("loginedMemberUsername", loginedMemberUsername);
@@ -17,4 +18,3 @@ public class HomeController {
         return "user/home/main";
     }
 }
-

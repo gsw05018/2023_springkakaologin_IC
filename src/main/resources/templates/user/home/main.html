@@ -1,0 +1,16 @@
+<html layout:decorate="~{user/common/layout}">
+
+<head>
+    <title th:text="메인"></title>
+</head>
+
+<body>
+
+<main layout:fragment="main">
+    메인페이지
+    <hr>
+    loginedMemberUsername 여부: [[${loginedMemberUsername}]]
+</main>
+
+</body>
+</html>
